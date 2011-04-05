@@ -29,7 +29,7 @@
     <name>Sesat Commons JAXB</name>
     <groupId>sesat</groupId>
     <artifactId>commons-jaxb</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <description>
@@ -79,4 +79,10 @@
             <url>http://sesat.no/maven2</url>
         </repository>
     </repositories>
+
+  <scm>
+    <connection>scm:svn:http://sesat.no/svn/sesat-commons/commons-jaxb/tags/commons-jaxb-1.1</connection>
+    <developerConnection>scm:svn:http://sesat.no/svn/sesat-commons/commons-jaxb/tags/commons-jaxb-1.1</developerConnection>
+    <url>http://sesat.no/svn/sesat-commons/commons-jaxb/tags/commons-jaxb-1.1</url>
+  </scm>
 </project>
