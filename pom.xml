@@ -16,7 +16,7 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with Sesat Commons.  If not, see <http://www.gnu.org/licenses />.
  -
- - $Id: project.xml 2296 2006-02-14 17:33:59Z magnuse $ 
+ - $Id: project.xml 2296 2006-02-14 17:33:59Z magnuse $
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
@@ -24,31 +24,36 @@
       <artifactId>commons-main</artifactId>
       <version>1.9</version>
     </parent>
-   
+
     <modelVersion>4.0.0</modelVersion>
     <name>Sesat Commons JAXB</name>
-    <groupId>sesat</groupId> 
+    <groupId>sesat</groupId>
     <artifactId>commons-jaxb</artifactId>
     <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <description>
-        J2EE JAXB utilities. 
+        J2EE JAXB utilities.
     </description>
     <url>http://sesat.no/projects/sesat-commons/commons-jaxb/</url>
 
     <developers>
         <developer>
-            <name>Michael Semb Wever</name>
+            <name>Mick Semb Wever</name>
             <id>ssmiweve</id>
-            <email>mick@wever.org</email>
-            <organization>Schibsted Søk AS</organization>
+            <email>mick@semb.wever.org</email>
             <url>http://www.wever.org</url>
             <timezone>+1</timezone>
         </developer>
     </developers>
-   
+
     <dependencies>
+        <dependency>
+            <!-- seems to fix erroneous namespaces... http://efreedom.com/Question/1-2816176/JAXB-Marshal-Without-Namespace -->
+          <groupId>com.sun.xml.bind</groupId>
+          <artifactId>jaxb-impl</artifactId>
+          <version>2.2.1</version>
+        </dependency>
         <!--dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
