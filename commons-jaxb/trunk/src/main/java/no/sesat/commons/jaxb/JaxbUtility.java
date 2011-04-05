@@ -21,7 +21,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import org.apache.log4j.Logger;
 
 /** Small and simple wrappers to typical jaxb operations.
  *
@@ -31,26 +30,34 @@ public final class JaxbUtility {
 
     // Constants -----------------------------------------------------
 
-    private static final Logger LOG = Logger.getLogger(JaxbUtility.class);
-
     // Attributes ----------------------------------------------------
     // Static --------------------------------------------------------
 
+    /** JAXBContext.newInstance(..) is a slow operation.
+     * @deprecated It is better the client creates the JAXBContent once and re-uses it to the other marshal method.
+     */
     public static String marshal(final Object obj, final Class... classes) throws JAXBException {
+        return marshal(JAXBContext.newInstance(classes), obj);
+    }
+
+    public static String marshal(final JAXBContext context, final Object obj) throws JAXBException {
 
         final StringWriter out = new StringWriter();
-
-        JAXBContext.newInstance(classes).createMarshaller().marshal(obj, out);
-
+        context.createMarshaller().marshal(obj, out);
         return out.toString();
     }
 
+    /** JAXBContext.newInstance(..) is a slow operation.
+     * @deprecated It is better the client creates the JAXBContent once and re-uses it to the other unmarshal method.
+     */
     public static <T extends Object> T unmarshal(final String xml, final Class<T> clazz) throws JAXBException{
 
-        return (T)JAXBContext
-                .newInstance(clazz)
-                .createUnmarshaller()
-                .unmarshal(new StringReader(xml));
+        return (T)unmarshal(JAXBContext.newInstance(clazz), xml);
+    }
+
+    public static Object unmarshal(final JAXBContext context, final String xml) throws JAXBException{
+
+        return context.createUnmarshaller().unmarshal(new StringReader(xml));
     }
 
     // Constructors --------------------------------------------------
